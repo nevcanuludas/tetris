@@ -1,14 +1,7 @@
 const canvas = document.getElementById('tetris');
 const context = canvas.getContext('2d');
 
-context.scale(20, 20)
-
-// T Shape
-const matrix = [
-  [0, 0 ,0],
-  [1, 1, 1],
-  [0, 1, 0],
-];
+context.scale(20, 20);
 
 function collide (arena, player) {
   const [m, o] = [player.matrix, player.pos];
@@ -28,6 +21,17 @@ function createMatrix (w, h) {
     matrix.push(new Array(w).fill(0));
   }
   return matrix;
+}
+
+function createPiece (type) {
+  if (type === 'T') {
+    return [
+      [0, 0 ,0],
+      [1, 1, 1],
+      [0, 1, 0],
+    ];
+  }
+
 }
 
 function draw() {
@@ -133,7 +137,7 @@ const arena = createMatrix(12, 20);
 
 const player = {
   pos: {x: 4, y: 0},
-  matrix: matrix
+  matrix: createPiece('T'),
 }
 
 document.addEventListener ('keydown', event => {
