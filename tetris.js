@@ -47,8 +47,19 @@ function update (time = 0) {
 }
 
 const player = {
-  pos: {x: 5, y: 7},
+  pos: {x: 4, y: 0},
   matrix: matrix,
 }
+
+document.addEventListener ('keydown', event => {
+  if (event.keyCode === 37) {
+    player.pos.x--;
+  } else if (event.keyCode === 39) {
+    player.pos.x++;
+  } else if (event.keyCode === 40) {
+    player.pos.y++;
+    dropCounter = 0;
+  }
+}) 
 
 update ();
